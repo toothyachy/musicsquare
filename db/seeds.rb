@@ -21,7 +21,8 @@ new_listings = [
     instruments: 'drummer',
     liked_genres: 'Heavy Metal',
     liked_bands: 'ACDC',
-    looking_for: 'vocals' },
+    looking_for: 'vocals',
+    user_id: 1 },
 
   { name: 'Coldplay',
     description: 'We are a band formed in 2021. We have 3 members in our band and love to jam together',
@@ -30,7 +31,8 @@ new_listings = [
     instruments: 'vocals',
     liked_genres: 'Rock',
     liked_bands: 'Chris Martins',
-    looking_for: 'vocals' },
+    looking_for: 'vocals',
+    user_id: 1 },
 
   { name: 'Elijah Woods',
     description: 'I am a soloist who jams often at Orchard Road.',
@@ -39,7 +41,8 @@ new_listings = [
     instruments: 'vocals',
     liked_genres: 'Jazz',
     liked_bands: 'Jamie Fine',
-    looking_for: 'guitarist' },
+    looking_for: 'guitarist',
+    user_id: 2 },
 
   { name: 'Niall Horan',
     description: 'I am a soloist who jams often at Orchard Road.',
@@ -48,7 +51,8 @@ new_listings = [
     instruments: 'vocals',
     liked_genres: 'Soft Pop, Pop Rock',
     liked_bands: 'One Direction',
-    looking_for: 'drummer' },
+    looking_for: 'drummer',
+    user_id: 2 },
 
   { name: 'We is One',
     description: 'We are a group of friends who come together to play for fun. We would want to move towards busking on the streets.',
@@ -57,11 +61,12 @@ new_listings = [
     instruments: 'drummer, guitarist, vocals',
     liked_genres: 'Pop Punk, Jazz',
     liked_bands: 'G-Idle',
-    looking_for: 'keyboardist, bassist' }
+    looking_for: 'keyboardist',
+    user_id: 3 }
 ]
 
 new_listings.each do |attributes|
-  listing = Flat.create!(attributes)
+  listing = Listing.create!(attributes)
   puts "Created #{listing.name}"
 end
 puts 'Finished!'
