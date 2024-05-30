@@ -60,7 +60,6 @@ new_listings = [
     looking_for: 'keyboardist, bassist' }
 ]
 
-
 new_listings.each do |attributes|
   listing = Flat.create!(attributes)
   puts "Created #{listing.name}"
