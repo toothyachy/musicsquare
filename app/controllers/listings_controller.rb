@@ -30,6 +30,7 @@ class ListingsController < ApplicationController
 
   def update
     @listing.update(listing_params)
+    @listing.images << listing_params[:images]
     if @listing.save
       # To update path to listing_path(@listing) when show.html.erb view is up
       redirect_to listings_path, status: :see_other
