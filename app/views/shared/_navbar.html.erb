@@ -2,12 +2,12 @@
   <div class="container-fluid p-0">
     <% if user_signed_in? %>
       <div class="navbar flex-grow-1 align-items-center justify-content-start p-0">
-        <%= link_to 'Logo', "#", class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
+        <%= link_to 'Logo', listings_path, class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
           <%# image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
         <%# end %>
-        <%= link_to "listings", "#", class: "nav-link mx-1 border-end py-3 px-5 border-secondary" %>
-        <%= link_to "requests", "#", class: "nav-link mx-1 border-end py-3 px-5 border-secondary" %>
-        <%= link_to "queue", "#", class: "nav-link mx-1 border-end py-3 px-5 border-secondary" %>
+        <%= link_to "my listings", "#", class: "nav-link mx-1 border-end py-3 px-5 border-secondary" %>
+        <%= link_to "my requests", "#", class: "nav-link mx-1 border-end py-3 px-5 border-secondary" %>
+        <%= link_to "my queue", "#", class: "nav-link mx-1 border-end py-3 px-5 border-secondary" %>
       </div>
       <div class="collapse navbar-collapse align-items-end">
         <div class="navbar-nav me-auto">
@@ -23,7 +23,7 @@
       </div>
     <% else %>
       <div class="navbar flex-grow-1 align-items-start p-0">
-        <%= link_to 'Logo', "#", class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
+        <%= link_to 'Logo', listings_path, class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
       </div>
       <div class="navbar navbar-right align-items-end border-start py-3 px-5 border-secondary">
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
