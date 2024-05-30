@@ -10,6 +10,13 @@
 
 puts 'Destroying database'
 Listing.destroy_all
+User.destroy_all
+
+puts ' Creating new users..'
+
+alexis = User.create!(email: 'alexis@change.com', password: '1234abcd')
+karen = User.create!(email: 'karen@change.com', password: '123abcd')
+brendan = User.create!(email: 'brendan@change.com', password: '123abc')
 
 puts 'Creating new listings'
 
@@ -22,7 +29,7 @@ new_listings = [
     liked_genres: 'Heavy Metal',
     liked_bands: 'ACDC',
     looking_for: 'vocals',
-    user_id: 1 },
+    user: alexis },
 
   { name: 'Coldplay',
     description: 'We are a band formed in 2021. We have 3 members in our band and love to jam together',
@@ -32,7 +39,7 @@ new_listings = [
     liked_genres: 'Rock',
     liked_bands: 'Chris Martins',
     looking_for: 'vocals',
-    user_id: 1 },
+    user: alexis },
 
   { name: 'Elijah Woods',
     description: 'I am a soloist who jams often at Orchard Road.',
@@ -42,7 +49,7 @@ new_listings = [
     liked_genres: 'Jazz',
     liked_bands: 'Jamie Fine',
     looking_for: 'guitarist',
-    user_id: 2 },
+    user: karen },
 
   { name: 'Niall Horan',
     description: 'I am a soloist who jams often at Orchard Road.',
@@ -52,7 +59,7 @@ new_listings = [
     liked_genres: 'Soft Pop, Pop Rock',
     liked_bands: 'One Direction',
     looking_for: 'drummer',
-    user_id: 2 },
+    user: karen },
 
   { name: 'We is One',
     description: 'We are a group of friends who come together to play for fun. We would want to move towards busking on the streets.',
@@ -62,7 +69,7 @@ new_listings = [
     liked_genres: 'Pop Punk, Jazz',
     liked_bands: 'G-Idle',
     looking_for: 'keyboardist',
-    user_id: 3 }
+    user: brendan }
 ]
 
 new_listings.each do |attributes|
