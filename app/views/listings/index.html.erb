@@ -1,4 +1,31 @@
 
-<% @listings.each do |listing| %>%
-  <p>Name: <%= listing.name %></p>
-<% end %>
+<div class="banner";>
+  <div class="container">
+    <h1>Music Square</h1>
+    <p>EVERYTHING FOR MUSICIANS</p>
+  </div>
+</div>
+
+
+<div class="container home">
+  <div class="row">
+    <% @listings.each do |listing| %>
+      <div class="listing-wrapper col-3">
+        <div class="listing rounded p-3 my-5">
+          <%= image_tag listing.images.first %>
+          <div class="listing-description mt-4">
+            <p><%= listing.name %></p>
+            <p><%= listing.liked_genres %></p>
+            <p><%= listing.looking_for %></p>
+            <p>Sound clip button</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<%# div class is used generally. %>
