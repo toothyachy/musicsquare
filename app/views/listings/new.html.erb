@@ -1,0 +1,8 @@
+<h1>Create New Listing</h1>
+
+<%= simple_form_for @listing do |f| %>
+  <%= f.input :name %>
+  <%= f.input :looking_for, collection: MUSICIANS %>
+  <%= f.input :images %>
+  <%= f.submit class:"btn btn-primary mt-3" %>
+<% end %>
