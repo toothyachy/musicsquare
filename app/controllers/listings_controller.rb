@@ -15,6 +15,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    @listing.images << listing_params[:images]
     @listing.user = current_user
     if @listing.save
       # To update path to listing_path(@listing) when show.html.erb view is up

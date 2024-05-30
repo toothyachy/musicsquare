@@ -3,5 +3,6 @@
 <%= simple_form_for @listing do |f| %>
   <%= f.input :name %>
   <%= f.input :looking_for, collection: MUSICIANS %>
+  <%= f.input :images, as: :file %>
   <%= f.submit class:"btn btn-primary mt-3" %>
 <% end %>
