@@ -1,1 +1,14 @@
 // Specific CSS for your home-page
+.home {
+  .listing-wrapper {
+    position: relative;
+  }
+
+  .listing-wrapper:nth-child(odd) {
+    bottom: 24px;
+  }
+
+  .listing-wrapper:nth-child(even) {
+    top: 24px;
+  }
+}

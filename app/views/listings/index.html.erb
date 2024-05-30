@@ -1,11 +1,11 @@
 
 
 
-<div class="container">
+<div class="container home">
   <div class="row">
     <% @listings.each do |listing| %>
-      <div class="col-3">
-        <div class="listing rounded p-3">
+      <div class="listing-wrapper col-3">
+        <div class="listing rounded p-3 my-5">
           <%= image_tag listing.images.first %>
           <div class="listing-description mt-4">
             <p><%= listing.name %></p>
