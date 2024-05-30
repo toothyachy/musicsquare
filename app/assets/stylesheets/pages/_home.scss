@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.home {
+
+  .banner h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .banner p {
+    text-align: center;
+  }
+
+  .listing-wrapper {
+    position: relative;
+  }
+
+  .listing-wrapper:nth-child(odd) {
+    bottom: 24px;
+  }
+
+  .listing-wrapper:nth-child(even) {
+    top: 24px;
+  }
+}
