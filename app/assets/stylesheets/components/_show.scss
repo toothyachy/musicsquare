@@ -14,18 +14,20 @@
   border-radius: 125px 0;
 }
 
-.text-wrap > p {
-  margin: 10px 0 0 0;
-  text-wrap: wrap;
-  display: inline-block;
+.stats > p {
+  margin: 0;
 }
 
 .band-name {
-  font-size: 75px;
+  font-size: 60px;
 }
 
 .right > p {
   margin: 0;
+}
+
+.band-wrapper {
+  width: 600px;
 }
 
 .description-wrapper {
