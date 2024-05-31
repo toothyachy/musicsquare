@@ -1,5 +1,67 @@
-<h1>Detailed Listing</h1>
+<div class="container-fluid show">
+  <div class="row">
+    <div class="left col p-0">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <% @listing.images.each do |list| %>
+            <div class="carousel-item active">
+              <img " src="<%= list %>" alt="" class="d-block">
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
 
-<p><%= @listing.name %></p>
+      <div class="row">
+        <div class="col-4">
+          <p class="m-0 mt-3">Instruments: </p>
+        </div>
+        <div class="col-8">
+          <p class="d-flex justify-content-start m-0 mt-3"><%= @listing.instruments %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <p class="m-0">Genres we love: </p>
+        </div>
+        <div class="col-8">
+          <p class="d-flex justify-content-start m-0"><%= @listing.liked_genres %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <p>Bands we love: </p>
+        </div>
+        <div class="col-8">
+          <p class="d-flex justify-content-start"><%= @listing.liked_bands %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="right col p-0">
+    <div class= "d-flex justify-content-center">
+      <div class="band-wrapper">
+        <p class="band-name"><%= @listing.name %></p>
+        <p class="d-flex justify-content-center">is looking for:</p>
+        <p class="band-name d-flex justify-content-end"><%= @listing.looking_for %></p>
+      </div>
+    </div>
+      <div class="d-flex justify-content-center">
+        <p class="description-wrapper"><%= @listing.description %></p>
+      </div>
+
+
+    </div>
+  </div>
+</div>
 
 <%= link_to "delete", listing_path(@listing), class: 'text-danger text-decoration-none fs-6', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
