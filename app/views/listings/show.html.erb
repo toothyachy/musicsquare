@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid show">
   <div class="row">
     <div class="left col p-0">
       <div id="carouselExample" class="carousel slide">
@@ -18,20 +18,28 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <div class="text-wrap top d-flex justify-content-center">
+      <div class="text-wrap top d-flex justify-content-start">
         <p>Instruments: </p>
         <p><%= @listing.instruments %></p>
       </div>
-      <div class="text-wrap bottom d-flex justify-content-center">
+      <div class="text-wrap bottom d-flex justify-content-start">
         <p>Genres: </p>
         <p><%= @listing.liked_genres %></p>
+      </div>
+      <div class="text-wrap bottom d-flex justify-content-start">
+        <p>Bands we love: </p>
+        <p><%= @listing.liked_bands %></p>
       </div>
     </div>
 
     <div class="right col p-0">
-      <p><%= @listing.name %></p>
-      <p>is looking for:</p>
-      <p><%= @listing.looking_for %></p>
+      <p class="band-name"><%= @listing.name %></p>
+      <p class="d-flex justify-content-center">is looking for:</p>
+      <p class="band-name d-flex justify-content-end"><%= @listing.looking_for %></p>
+      <div class="d-flex justify-content-center">
+        <p class="description-wrapper"><%= @listing.description %></p>
+      </div>
+
 
     </div>
   </div>

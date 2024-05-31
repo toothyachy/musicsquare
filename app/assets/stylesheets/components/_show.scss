@@ -1,17 +1,35 @@
-
+.show {
+  padding: 150px 100px;
+}
 
 .carousel {
-  width: 650px;
-  height: 425px;
+  width: 600px;
+  height: 375px;
 }
 
 .carousel-item > img {
-  width: 650px;
-  height: 425px;
+  width: 600px;
+  height: 375px;
   object-fit: cover;
   border-radius: 125px 0;
 }
 
 .text-wrap > p {
   margin: 10px 0 0 0;
+  text-wrap: wrap;
+  display: inline-block;
+}
+
+.band-name {
+  font-size: 75px;
+}
+
+.right > p {
+  margin: 0;
+}
+
+.description-wrapper {
+  width: 400px;
+  font-size: 19px;
+  padding-top: 40px;
 }
