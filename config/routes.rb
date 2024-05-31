@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/listings/filter" => "listings#filter"
+  resources :listings do
+    resources :requests, only: [ :new, :create ]
+  end
 
-  resources :listings
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
