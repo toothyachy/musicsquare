@@ -8,7 +8,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+require 'date'
+
 puts 'Destroying database'
+Availability.destroy_all
 Listing.destroy_all
 User.destroy_all
 
@@ -76,4 +79,75 @@ new_listings.each do |attributes|
   listing = Listing.create!(attributes)
   puts "Created #{listing.name}"
 end
+
+puts "Creating new availabilities..."
+
+availabilities = [
+  { date: Date.parse("3 June 2024"),
+  start_time: DateTime.parse("3 June 2024 15:00:00"),
+  end_time: DateTime.parse("3 June 2024 19:00:00"),
+  listing: Listing.first
+  },
+  { date: Date.parse("7 June 2024"),
+  start_time: DateTime.parse("7 June 2024 18:00:00"),
+  end_time: DateTime.parse("7 June 2024 22:00:00"),
+  listing: Listing.first
+  },
+  { date: Date.parse("7 June 2024"),
+  start_time: DateTime.parse("7 June 2024 14:00:00"),
+  end_time: DateTime.parse("7 June 2024 16:00:00"),
+  listing: Listing.first
+  },
+  { date: Date.parse("8 June 2024"),
+  start_time: DateTime.parse("8 June 2024 12:00:00"),
+  end_time: DateTime.parse("8 June 2024 18:00:00"),
+  listing: Listing.first
+  },
+  { date: Date.parse("11 June 2024"),
+  start_time: DateTime.parse("11 June 2024 19:00:00"),
+  end_time: DateTime.parse("11 June 2024 21:00:00"),
+  listing: Listing.first
+  },
+  { date: Date.parse("13 June 2024"),
+  start_time: DateTime.parse("13 June 2024 15:00:00"),
+  end_time: DateTime.parse("13 June 2024 19:00:00"),
+  listing: Listing.first
+  },
+  { date: Date.parse("2 June 2024"),
+  start_time: DateTime.parse("2 June 2024 14:00:00"),
+  end_time: DateTime.parse("2 June 2024 22:00:00"),
+  listing: Listing.second
+  },
+  { date: Date.parse("4 June 2024"),
+  start_time: DateTime.parse("4 June 2024 12:00:00"),
+  end_time: DateTime.parse("4 June 2024 18:00:00"),
+  listing: Listing.second
+  },
+  { date: Date.parse("7 June 2024"),
+  start_time: DateTime.parse("7 June 2024 19:00:00"),
+  end_time: DateTime.parse("7 June 2024 21:00:00"),
+  listing: Listing.second
+  },
+  { date: Date.parse("9 June 2024"),
+  start_time: DateTime.parse("9 June 2024 15:00:00"),
+  end_time: DateTime.parse("9 June 2024 19:00:00"),
+  listing: Listing.second
+  },
+]
+
+availabilities.each do |attributes|
+  availability = Availability.create!(attributes)
+  puts "Created availabilities for #{availability.listing.name}"
+end
+
 puts 'Finished!'
+
+# rails g model Request
+# requestor_comment:string
+# approver_comment:string
+# status:string
+# date:date
+# start_time:time
+# end_time:time
+# user:references
+# listing:references

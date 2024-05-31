@@ -1,0 +1,33 @@
+<h1>User searched for</h1>
+<p>Selected musicians are <%= @selected_musicians %></p>
+<p>Selected genres are <%= @selected_genres %></p>
+
+<hr>
+
+<h3>Only musicians</h3>
+<ul>
+<% @only_musician.each do |result| %>
+  <li><strong><%= result.name %></strong> is looking for <%= result.looking_for %></li>
+<% end %>
+</ul>
+
+<h3>Only genres</h3>
+<ul>
+<% @only_genre.each do |result| %>
+  <li><strong><%= result.name %></strong> likes <%= result.liked_genres %></li>
+<% end %>
+</ul>
+
+<h3>Both musicians and genres</h3>
+<ul>
+<% @and_list.each do |result| %>
+  <li><strong><%= result.name %></strong> is looking for <%= result.looking_for %> AND interested in <%= result.liked_genres %></li>
+<% end %>
+</ul>
+
+<h3>Musicians or genres</h3>
+<ul>
+<% @or_list.each do |result| %>
+  <li><strong><%= result.name %></strong> is looking for <%= result.looking_for %> OR interested in <%= result.liked_genres %></li>
+<% end %>
+</ul>
