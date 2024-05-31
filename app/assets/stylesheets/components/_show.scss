@@ -1,0 +1,17 @@
+
+
+.carousel {
+  width: 650px;
+  height: 425px;
+}
+
+.carousel-item > img {
+  width: 650px;
+  height: 425px;
+  object-fit: cover;
+  border-radius: 125px 0;
+}
+
+.text-wrap > p {
+  margin: 10px 0 0 0;
+}

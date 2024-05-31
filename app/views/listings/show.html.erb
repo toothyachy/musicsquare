@@ -1,5 +1,40 @@
-<h1>Detailed Listing</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="left col p-0">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <% @listing.images.each do |list| %>
+            <div class="carousel-item active">
+              <img " src="<%= list %>" alt="" class="d-block">
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="text-wrap top d-flex justify-content-center">
+        <p>Instruments: </p>
+        <p><%= @listing.instruments %></p>
+      </div>
+      <div class="text-wrap bottom d-flex justify-content-center">
+        <p>Genres: </p>
+        <p><%= @listing.liked_genres %></p>
+      </div>
+    </div>
 
-<p><%= @listing.name %></p>
+    <div class="right col p-0">
+      <p><%= @listing.name %></p>
+      <p>is looking for:</p>
+      <p><%= @listing.looking_for %></p>
+
+    </div>
+  </div>
+</div>
 
 <%= link_to "delete", listing_path(@listing), class: 'text-danger text-decoration-none fs-6', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
