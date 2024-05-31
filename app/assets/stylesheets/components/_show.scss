@@ -1,0 +1,37 @@
+.show {
+  padding: 150px 100px;
+}
+
+.carousel {
+  width: 600px;
+  height: 375px;
+}
+
+.carousel-item > img {
+  width: 600px;
+  height: 375px;
+  object-fit: cover;
+  border-radius: 125px 0;
+}
+
+.stats > p {
+  margin: 0;
+}
+
+.band-name {
+  font-size: 60px;
+}
+
+.right > p {
+  margin: 0;
+}
+
+.band-wrapper {
+  width: 600px;
+}
+
+.description-wrapper {
+  width: 400px;
+  font-size: 19px;
+  padding-top: 40px;
+}
