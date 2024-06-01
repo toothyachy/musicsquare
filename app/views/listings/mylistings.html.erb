@@ -1,3 +1,19 @@
-<% @list.each do |list| %>
-  <%= list.name %>
-<% end %>
+<h2>My Listings</h2>
+
+<div class="container home">
+  <div class="row">
+    <% @list.each do |list| %>
+      <div class="listing-wrapper col-3 ">
+          <div class="listing rounded p-3 my-5">
+            <%= image_tag list.images.first %>
+            <div class="listing-description mt-4">
+              <p><%= list.name %></p>
+              <p><%= list.liked_genres %></p>
+              <p><%= list.looking_for %></p>
+              <p>Sound clip button</p>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
