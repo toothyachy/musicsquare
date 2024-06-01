@@ -5,13 +5,13 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
     @listing = set_listing
-    availability = Availability.where(listing: @listing)
-    @slots = []
-    start_time = availability[0].start_time
-    end_time = availability[0].end_time
-    (start_time.to_i...end_time.to_i).step(3600) do |time|
-      @slots << Time.at(time).in_time_zone(start_time.time_zone).strftime("%H:%M")
-    end
+    # availability = Availability.where(listing: @listing)
+    # @slots = []
+    # start_time = availability[0].start_time
+    # end_time = availability[0].end_time
+    # (start_time.to_i...end_time.to_i).step(3600) do |time|
+    #   @slots << Time.at(time).in_time_zone(start_time.time_zone).strftime("%H:%M")
+    # end
   end
 
   # "start_time"=>"14:00",

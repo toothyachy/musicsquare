@@ -6,37 +6,37 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
 
   connect() {
-    // const fetchAvailableDates = () => {
-    //   const url = '/listings/availability'
-    //   fetch(url)
-    //   .then(response => { response.json() })
-    //   .then(data => { console.log(data.dates) })
-        // flatpickr(this.element, {
-        //   dateFormat: "Y-m-d",
-        //   enable: data.dates
-        // })
-      // })
-    //   .catch(error => console.error('Error:', error));
-    // }
-    // fetchAvailableDates()
+    const listingId = this.element.dataset.requestpickerListingId;
 
-    const url = '/listings/availability'
+    const url = `/listings/${listingId}/availabilities`
     const fetchAvailableDates = async(url) => {
       try {
         const response = await fetch(url)
-        const data = await response.json()
-        return data
+        const slots = await response.json()
+        console.log(slots);
+        return slots
       } catch (error) {
         console.error('Error:', error)
       }
     }
 
     fetchAvailableDates(url)
-    .then(data => {
+    .then(slots => {
       flatpickr(this.element, {
       dateFormat: "Y-m-d",
-      enable: data
+      enable: slots['date_slots'],
+      onChange: function(selectedDates, dateStr, instance) {
+        getTimeslots(selectedDates, dateStr, instance, slots['time_slots']);
+      }
     })
   })
+
+    function getTimeslots(selectedDates, dateStr, instance, timeslots) {
+      console.log("Callback triggered!");
+      console.log(timeslots);
+      // console.log('the callback returns the selected dates', selectedDates)
+      // console.log('but returns it also as a string', dateStr)
+      // console.log('and the flatpickr instance', instance)
+    }
   }
 }
