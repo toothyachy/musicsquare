@@ -5,15 +5,15 @@
 </div>
 
 <div class="my-listing d-flex">
-  <div class="left-column">
-    <h2 class="centered text">My Listings</h2>
+  <div class="left-column d-flex align-items-center">
+    <h2>My Listings</h2>
   </div>
 
   <div class="flex-grow-1">
     <div class="container home">
-      <div class="listing-card">
+      <div class="row gap-5">
         <% @list.each do |list| %>
-          <div class="list-wrap listing-wrapper">
+          <div class="list-wrap listing-wrapper col-3">
               <div class="listing rounded p-3 my-5">
                 <%= image_tag list.images.first %>
                 <div class="listing-description mt-4">

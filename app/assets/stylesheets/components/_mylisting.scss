@@ -3,7 +3,7 @@ $color: #131515;
 .add {
   display: flex;
   justify-content: end;
-  margin: 20px 25px;
+  margin: 20px 25px 40px 0;
 }
 
 .add-text {
@@ -12,10 +12,9 @@ $color: #131515;
 
 .left-column {
   padding: 0 100px;
-  text-align: center;
   height: 100vh;
   position: sticky;
-  top: 50%;
+  top: 0;
 }
 
 .left-column > h2 {
@@ -23,14 +22,6 @@ $color: #131515;
   color: $color;
 }
 
-.listing-card {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 16px;
-  margin: 16px
-}
 .list-wrap {
   width: 300px;
 }
