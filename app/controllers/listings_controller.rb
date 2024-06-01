@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
   end
 
   def mylistings
-    @user = current_user
+    @list = current_user.listings
   end
 
   def new
