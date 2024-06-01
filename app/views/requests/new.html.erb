@@ -1,5 +1,18 @@
 <h1>Create New Request</h1>
 
-<%= month_calendar(attribute: :date) do |date| %>
-  <%= date %>
+<%= simple_form_for [@listing, @request] do |f| %>
+  <%= f.input :requestor_comment %>
+  <div class="row">
+    <div class="col-6">
+      <%= f.input :date,
+                as: :string,
+                label: "Available dates"
+                input_html: { data: { controller: "requestpicker" } } %>
+      <%= f.submit class:"btn btn-primary mt-3" %>
+    </div>
+    <div class="col-6">
+      <%= f.input :start_time, collection: @slots, as: :select, label: "Available timeslots" %>
+
+    </div>
+  </div>
 <% end %>

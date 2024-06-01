@@ -1,9 +1,0 @@
-<h1>Create New Request</h1>
-
-<%= simple_form_for [@listing, @request] do |f| %>
-  <%= f.input :requestor_comment %>
-  <%= f.input :date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-  <%= f.submit class:"btn btn-primary mt-3" %>
-<% end %>
