@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/listings/filter" => "listings#filter"
+  get '/listings/my-listings', to: 'listings#mylistings'
   resources :listings do
     resources :requests, only: [ :new, :create ]
   end
