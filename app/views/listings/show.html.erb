@@ -65,3 +65,4 @@
 </div>
 
 <%= link_to "delete", listing_path(@listing), class: 'text-danger text-decoration-none fs-6', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<%= link_to "Jam with Us", new_listing_request_path(@listing) %>

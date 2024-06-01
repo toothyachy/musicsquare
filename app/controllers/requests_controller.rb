@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+    @listing = set_listing
   end
 
   def create
