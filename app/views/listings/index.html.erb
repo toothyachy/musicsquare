@@ -16,11 +16,12 @@
         <%= link_to listing_path(listing), class: 'text-decoration-none text-secondary' do %>
           <div class="listing rounded p-3 my-5">
             <%= cl_image_tag listing.images.first.key %>
-            <div class="listing-description mt-4">
+            <div data-controller="music" class="listing-description mt-4">
               <p><%= listing.name %></p>
               <p><%= listing.liked_genres %></p>
               <p><%= listing.looking_for %></p>
-              <audio controls>
+              <button id="play-audio" data-music-target="button" data-action="click->music#togglePlayPause">Play</button>
+              <audio data-music-target="audio" class="d-none" controls>
                 <source src="<%= cloudinary_url(listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
                 Your browser does not support the audio element.
               </audio>

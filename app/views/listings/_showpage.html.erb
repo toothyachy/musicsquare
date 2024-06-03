@@ -1,63 +1,68 @@
 <div class="container-fluid show-con">
-    <div class="row">
-      <div class="col-6 p-0">
-        <div id="carouselExample" class="carousel slide">
-          <div class="carousel-inner">
-            <% @listing.images.each do |list| %>
-              <div class="carousel-item active">
-                <%= cl_image_tag list.key %>
-              </div>
-            <% end %>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+  <div class="row">
+    <div class="col-6 p-0">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <% @listing.images.each do |list| %>
+            <div class="carousel-item active">
+              <%= cl_image_tag list.key %>
+            </div>
+          <% end %>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
 
-        <div class="row">
-          <div class="col-4">
-            <p class="m-0 mt-3">Instruments: </p>
-          </div>
-          <div class="col-8">
-            <p class="d-flex justify-content-start m-0 mt-3"><%= @listing.instruments %></p>
-          </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="m-0 mt-3">Instruments: </p>
         </div>
-
-        <div class="row">
-          <div class="col-4">
-            <p class="m-0">Genres we love: </p>
-          </div>
-          <div class="col-8">
-            <p class="d-flex justify-content-start m-0"><%= @listing.liked_genres %></p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-4">
-            <p>Bands we love: </p>
-          </div>
-          <div class="col-8">
-            <p class="d-flex justify-content-start"><%= @listing.liked_bands %></p>
-          </div>
+        <div class="col-8">
+          <p class="d-flex justify-content-start m-0 mt-3"><%= @listing.instruments %></p>
         </div>
       </div>
 
-      <div class="right col-6 p-0">
-        <div class= "d-flex justify-content-center">
-          <div class="band-wrapper">
-            <p class="band-name"><%= @listing.name %></p>
-            <p class="d-flex justify-content-center">is looking for:</p>
-            <p class="band-name d-flex justify-content-end"><%= @listing.looking_for %></p>
-          </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="m-0">Genres we love: </p>
         </div>
-          <div class="d-flex justify-content-center">
-            <p class="description-wrapper"><%= @listing.description %></p>
-          </div>
+        <div class="col-8">
+          <p class="d-flex justify-content-start m-0"><%= @listing.liked_genres %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <p>Bands we love: </p>
+        </div>
+        <div class="col-8">
+          <p class="d-flex justify-content-start"><%= @listing.liked_bands %></p>
+        </div>
       </div>
     </div>
+
+    <div class="right col-6 p-0">
+      <div class= "d-flex justify-content-center">
+        <div class="band-wrapper">
+          <p class="band-name"><%= @listing.name %></p>
+          <p class="d-flex justify-content-center">is looking for:</p>
+          <p class="band-name d-flex justify-content-end"><%= @listing.looking_for %></p>
+        </div>
+      </div>
+        <div class="d-flex justify-content-center">
+          <p class="description-wrapper"><%= @listing.description %></p>
+        </div>
+          <audio controls>
+            <source src="<%= cloudinary_url(@listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+    </div>
   </div>
+</div>
