@@ -15,8 +15,8 @@
               <p>Time: <%= request.request_time %></p>
               <p class="requestor-box"><%= request.requestor_comment %></p>
               <div class="d-flex justify-content-around mt-2">
-                <p class="accept"><i class="fa-regular fa-circle-check"></i></p>
-                <p class= "decline"><i class="fa-regular fa-circle-xmark"></i></p>
+                <p class="acceptance">Accept</i></p>
+                <p class= "acceptance">Delete</p>
               </div>
             </div>
           </div>
@@ -39,8 +39,11 @@
               <p>Username</p>
               <p>Date: <%= request.request_date %></p>
               <p>Time: <%= request.request_time %></p>
-              <p><%= request.status %></p>
               <p class="requestor-box"><%= request.requestor_comment %></p>
+              <div class="d-flex justify-content-around mt-2">
+                <p class="acceptance">Accept</i></p>
+                <p class= "acceptance">Delete</p>
+              </div>
             </div>
           </div>
         <% end %>
@@ -62,8 +65,11 @@
               <p>Username</p>
               <p>Date: <%= request.request_date %></p>
               <p>Time: <%= request.request_time %></p>
-              <p><%= request.status %></p>
               <p class="requestor-box"><%= request.requestor_comment %></p>
+              <div class="d-flex justify-content-around mt-2">
+                <p class="acceptance">Accept</i></p>
+                <p class= "acceptance">Delete</p>
+              </div>
             </div>
           </div>
         <% end %>
