@@ -5,4 +5,6 @@ class Listing < ApplicationRecord
   validates :name, presence: true
 
   validates :looking_for, inclusion: { in: MUSICIANS, message: "%{value} is not a valid musician" }
+
+  has_many_attached :images
 end

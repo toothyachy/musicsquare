@@ -2,7 +2,14 @@
 
 <%= simple_form_for @listing do |f| %>
   <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :sound_clip %>
+  <%= f.input :images, as: :file, input_html: { multiple: true } %>
+  <%= f.input :instruments %>
+  <%= f.input :liked_genres %>
+  <%= f.input :liked_bands %>
+
   <%= f.input :looking_for, collection: MUSICIANS %>
-  <%= f.input :images %>
+
   <%= f.submit class:"btn btn-primary mt-3" %>
 <% end %>
