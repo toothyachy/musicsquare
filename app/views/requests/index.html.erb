@@ -1,14 +1,97 @@
-<h1>connected to index</h1>
 
-<% @requests.each do |user_request| %>
-  <p><%= user_request.listing.name %></p>
-  <% user_request.listing.images.each do |image| %>
-    <p><%= image_tag image %></p>
-  <% end %>
-  <p><%= user_request.requestor_comment %></p>
-  <p><%= user_request.request_date %></p>
-  <p><%= user_request.request_time %></p>
-  <p><%= user_request.status %></p>
+<div class="d-flex align-items-center justify-content-center requests-navigation">
+  <%= link_to 'Accepted', '#accepted-row', class: "in-page-links" %>
+  <%= link_to 'Declined', '#declined-row', class: "in-page-links" %>
+</div>
 
+<div class="requests-page">
 
-<% end %>
+  <%# pending %>
+  <div class="row">
+    <div class="col-4 d-flex align-items-center justify-content-center">
+      <h1>My requests</h1>
+    </div>
+
+    <% if @pending == [] %>
+      <div class="d-flex col-8">
+        <p class="not-accepted">No pending requests</p>
+      </div>
+    <% elsif @pending %>
+      <% @requests.each do |user_request| %>
+        <% if user_request.status == 'pending' %>
+          <div class="d-flex listing-wrapper queue-wrapper col-8">
+            <div class="listing queue rounded p-3 my-5">
+              <%= image_tag user_request.listing.images.first %>
+              <div class="listing-description mt-4">
+                <p class="text-center">You sent a request to</p>
+                <strong class="d-flex justify-content-center"><%= user_request.listing.name %></strong>
+                <p class="text-center">to jam on <%= user_request.request_date %> at <%= user_request.request_time %></p>
+                <p class="requestor-box"><%= user_request.requestor_comment %></p>
+                <div class="d-flex justify-content-around mt-2">
+                  <p class="acceptance">Pending</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# accepted %>
+  <div id="accepted-row" class="row">
+    <div class="col-4 d-flex align-items-center justify-content-center">
+      <h1>Accepted</h1>
+    </div>
+
+    <% if @accepted == [] %>
+      <div class="d-flex col-8">
+        <p class="not-accepted">Nobody wants you</p>
+      </div>
+    <% elsif @accepted %>
+      <% @requests.each do |user_request| %>
+        <% if user_request.status == 'accept' %>
+          <div class="d-flex listing-wrapper queue-wrapper col-8">
+            <div class="listing queue rounded p-3 my-5">
+              <%= image_tag user_request.listing.images.first %>
+              <div class="listing-description mt-4">
+                <strong class="d-flex justify-content-center"><%= user_request.listing.name %></strong>
+                <p class="text-center"><span class="accepted">accepted</span> your request to jam on <%= user_request.request_date %> at <%= user_request.request_time %></p>
+                <p class="requestor-box"><%= user_request.approver_comment %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# declined %>
+  <div id="declined-row" class="row">
+    <div class="col-4 d-flex align-items-center justify-content-center">
+      <h1>Declined</h1>
+    </div>
+
+    <% if @decline == [] %>
+      <div class="d-flex col-8">
+        <p class="not-accepted">Everybody wants you</p>
+      </div>
+    <% elsif @decline %>
+      <% @requests.each do |user_request| %>
+        <% if user_request.status == 'decline' %>
+          <div class="d-flex listing-wrapper queue-wrapper col-8">
+            <div class="listing queue rounded p-3 my-5">
+              <%= image_tag user_request.listing.images.first %>
+              <div class="listing-description mt-4">
+                <strong class="d-flex justify-content-center"><%= user_request.listing.name %></strong>
+                <p class="text-center"><span class="rejected">declined</span> your request to jam on <%= user_request.request_date %> at <%= user_request.request_time %></p>
+                <p class="requestor-box"><%= user_request.approver_comment %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+.requests-navigation {
+  width: 100%;
+  border-bottom: 1px solid #131515;
+  border-top: 1px solid #131515;
+  margin-top: 150px;
+}
+
+.in-page-links {
+  text-decoration: none;
+  margin-right: 100px;
+  font-size: 25px;
+  color: #131515;
+}
+
+.not-accepted {
+  width: 500px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+.rejected {
+  color: #FF6663;
+}
+
+.accepted {
+  color: #339989;
+}
+
+// .requests-page {
+//   margin-top: 100px;
+// }

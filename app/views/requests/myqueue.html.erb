@@ -18,10 +18,10 @@
               <div class="d-flex justify-content-around mt-2">
 
                 <%= link_to accept_request_path(request), data: { turbo_method: :patch }, class: 'text-decoration-none', value: 'accept' do %>
-                  <p class="acceptance">Accept</i></p>
+                  <p class="acceptance">Accept</p>
                 <% end %>
                 <%= link_to decline_request_path(request), data: { turbo_method: :patch }, class: 'text-decoration-none', value: 'decline' do %>
-                  <p class="acceptance">Decline</i></p>
+                  <p class="acceptance">Decline</p>
                 <% end %>
               </div>
             </div>
@@ -47,8 +47,7 @@
               <p>Time: <%= request.request_time %></p>
               <p class="requestor-box"><%= request.requestor_comment %></p>
               <div class="d-flex justify-content-around mt-2">
-                <p class="acceptance">Accepted</i></p>
-                <p class= "acceptance">Declined</p>
+                <p class="acceptance">Accepted</p>
               </div>
             </div>
           </div>
@@ -73,7 +72,6 @@
               <p>Time: <%= request.request_time %></p>
               <p class="requestor-box"><%= request.requestor_comment %></p>
               <div class="d-flex justify-content-around mt-2">
-                <p class="acceptance">Accepted</i></p>
                 <p class= "acceptance">Declined</p>
               </div>
             </div>
