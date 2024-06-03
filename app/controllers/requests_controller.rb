@@ -41,6 +41,7 @@ class RequestsController < ApplicationController
   def accept
     @request = Request.find(params[:id])
     @request.update(status: "accept")
+    @request.update(booked_time: '2024-07-03T19:00:00.000+00:00')
     raise
   end
 
