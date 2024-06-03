@@ -1,14 +1,23 @@
-<h1>connected to index</h1>
+<%# pending %>
 
-<% @request.each do |user_request| %>
-  <p><%= user_request.listing.name %></p>
-  <% user_request.listing.images.each do |image| %>
-    <p><%= image_tag image %></p>
-  <% end %>
-  <p><%= user_request.requestor_comment %></p>
-  <p><%= user_request.request_date %></p>
-  <p><%= user_request.request_time %></p>
-  <p><%= user_request.status %></p>
-
-
-<% end %>
+<div class="row">
+  <div class="col-4 d-flex align-items-center justify-content-center">
+    <h1>My requests</h1>
+  </div>
+  <div class="listing-wrapper queue-wrapper col-8">
+    <p><% @request.each do |user_request| %></p>
+      <div class="listing queue rounded p-3 my-5">
+        <%= image_tag user_request.listing.images.first %>
+        <div class="listing-description mt-4">
+          <p>Username</p>
+          <p>Date: <%= user_request.request_date %></p>
+          <p>Time: <%= user_request.request_time %></p>
+          <p class="requestor-box"><%= user_request.requestor_comment %></p>
+          <div>
+            <p class="mt-4 p-0">pending</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

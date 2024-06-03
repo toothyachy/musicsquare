@@ -7,7 +7,6 @@ class RequestsController < ApplicationController
   end
 
   def myqueue
-    @request = current_user.listings
   end
 
 
