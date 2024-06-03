@@ -1,3 +1,6 @@
+require 'date'
+require 'json'
+
 class ListingsController < ApplicationController
   before_action :set_listing, only: [ :show, :edit, :update, :destroy ]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
@@ -15,6 +18,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @availability = @listing.availabilities.build
   end
 
   def create
@@ -53,7 +57,8 @@ class ListingsController < ApplicationController
     # genres = JSON.parse(genres)
     genres = ["Heavy Metal", "Jazz", "Soft Pop", "Pop Rock", "Pop Punk", "Rock", "Death Metal", "Goth", "Punk", "Japanese Rock", "Ballads"]
     @selected_genres = genres.sample(3)
-    @selected_musicians = MUSICIANS.sample(3)
+    musicians = Listing::MUSICIANS
+    @selected_musicians = musicians.sample(3)
 
     @only_musician = []
     @only_genre = []
@@ -75,7 +80,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit(:name, :description, :sound_clip, :images, :instruments, :liked_genres, :liked_bands, :looking_for)
+    params.require(:listing).permit(:name, :description, :sound_clip, :images, :instruments, :liked_genres, :liked_bands, :looking_for, availabilities_attributes: [:id, :date_range, :day, :start_time, :end_time])
   end
 
   def set_listing

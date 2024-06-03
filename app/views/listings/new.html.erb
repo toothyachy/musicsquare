@@ -4,5 +4,31 @@
   <%= f.input :name %>
   <%= f.input :looking_for, collection: Listing::MUSICIANS %>
   <%= f.input :images %>
+
+ <%= f.simple_fields_for :availabilities do |af| %>
+    <div class="nested-fields">
+      <%= af.input :date_range,
+                label: "Select range of dates",
+                input_html: { data: { controller: "datepicker" }} %>
+      <%= af.input :day,
+                as: :select,
+                collection: %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday),
+                label: "Select the usual day you jam" %>
+      <div class="row">
+        <div class="col-6">
+          <%= af.input :start_time,
+                    input_html: { data: { controller: "timepicker" },
+                    label: "Start time" } %>
+        </div>
+        <div class="col-6">
+          <%= af.input :end_time,
+                    input_html: { data: { controller: "timepicker" },
+                    label: "End time" } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
   <%= f.submit class:"btn btn-primary mt-3" %>
 <% end %>
