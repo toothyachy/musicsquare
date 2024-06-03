@@ -1,11 +1,18 @@
+require 'date'
+
 class AvailabilitiesController < ApplicationController
 
   def index
     listing = params[:listing_id]
     availabilities = Availability.where(listing: listing)
-    requests = Request.where(listing: listing)
-    bookings = requests.map { |request| request.booked_time }
-    raise
+    @requests = Request.where(listing: listing)
+    bookings = []
+    @requests.each do |request|
+      if request.booked_time != nil
+        parsed_time = DateTime.parse(request.booked_time)
+        bookings << parsed_time
+      end
+    end
     avail_slots = []
     date_slots = []
 
@@ -18,7 +25,6 @@ class AvailabilitiesController < ApplicationController
     render json: @slots
   end
 
-
   private
 
   def set_available_slots(availability)
@@ -26,7 +32,6 @@ class AvailabilitiesController < ApplicationController
     day_of_week = Date::DAYNAMES.index(availability[:day])
     start_time = DateTime.parse(availability[:start_time])
     end_time = DateTime.parse(availability[:end_time])
-
     available_slots = []
 
     (start_date..end_date).each do |date|
@@ -39,7 +44,6 @@ class AvailabilitiesController < ApplicationController
         end
       end
     end
-
     available_slots
   end
 
@@ -48,42 +52,12 @@ class AvailabilitiesController < ApplicationController
   end
 
   def get_current_available_slots(availability, bookings = [])
-    available_slots = set_available_slots(availability)
-    puts available_slots
-
-    # Remove booked slots from available slots
-    current_available_slots = available_slots - bookings
-
-    puts "Available slots after booking:"
-    current_available_slots.each do |slot|
-      puts "#{slot[:date]} - #{slot[:start_time]} to #{slot[:end_time]}"
+  available_slots = set_available_slots(availability)
+  available_slots.each do |slot|
+    if bookings.include?(slot[:start_time])
+      available_slots.delete(slot)
     end
-
-    current_available_slots
   end
+  available_slots
 end
-
-
-# listing_availabilities GET    /listings/:listing_id/availabilities(.:format) availabilities#index
-
-#   puts set_date_slots(availability)
-# puts set_available_slots(availability)
-
-# [{:date=>#<Date: 2024-06-17 ((2460479j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-06-17T14:00:00+00:00 ((2460479j,50400s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-06-17T15:00:00+00:00 ((2460479j,54000s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-06-17 ((2460479j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-06-17T15:00:00+00:00 ((2460479j,54000s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-06-17T16:00:00+00:00 ((2460479j,57600s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-06-24 ((2460486j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-06-24T14:00:00+00:00 ((2460486j,50400s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-06-24T15:00:00+00:00 ((2460486j,54000s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-06-24 ((2460486j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-06-24T15:00:00+00:00 ((2460486j,54000s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-06-24T16:00:00+00:00 ((2460486j,57600s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-07-01 ((2460493j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-07-01T14:00:00+00:00 ((2460493j,50400s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-07-01T15:00:00+00:00 ((2460493j,54000s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-07-01 ((2460493j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-07-01T15:00:00+00:00 ((2460493j,54000s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-07-01T16:00:00+00:00 ((2460493j,57600s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-07-08 ((2460500j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-07-08T14:00:00+00:00 ((2460500j,50400s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-07-08T15:00:00+00:00 ((2460500j,54000s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-07-08 ((2460500j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-07-08T15:00:00+00:00 ((2460500j,54000s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-07-08T16:00:00+00:00 ((2460500j,57600s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-07-15 ((2460507j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-07-15T14:00:00+00:00 ((2460507j,50400s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-07-15T15:00:00+00:00 ((2460507j,54000s,0n),+0s,2299161j)>},
-# {:date=>#<Date: 2024-07-15 ((2460507j,0s,0n),+0s,2299161j)>, :start_time=>#<DateTime: 2024-07-15T15:00:00+00:00 ((2460507j,54000s,0n),+0s,2299161j)>, :end_time=>#<DateTime: 2024-07-15T16:00:00+00:00 ((2460507j,57600s,0n),+0s,2299161j)>}]
-# Available slots after booking:
-# 2024-06-24 - 2024-06-24T14:00:00+00:00 to 2024-06-24T15:00:00+00:00
-# 2024-07-01 - 2024-07-01T14:00:00+00:00 to 2024-07-01T15:00:00+00:00
-# 2024-07-01 - 2024-07-01T15:00:00+00:00 to 2024-07-01T16:00:00+00:00
-# 2024-07-08 - 2024-07-08T14:00:00+00:00 to 2024-07-08T15:00:00+00:00
-# 2024-07-08 - 2024-07-08T15:00:00+00:00 to 2024-07-08T16:00:00+00:00
-# 2024-07-15 - 2024-07-15T14:00:00+00:00 to 2024-07-15T15:00:00+00:00
-# 2024-07-15 - 2024-07-15T15:00:00+00:00 to 2024-07-15T16:00:00+00:00
+end
