@@ -21,7 +21,10 @@
                   <p><%= list.name %></p>
                   <p><%= list.liked_genres %></p>
                   <p><%= list.looking_for %></p>
-                  <p>Sound clip button</p>
+                  <audio controls>
+                    <source src="<%= cloudinary_url(list.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
+                    Your browser does not support the audio element.
+                  </audio>
                   <audio controls>
                   <source src="<%= cloudinary_url(list.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
                   Your browser does not support the audio element.
