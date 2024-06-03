@@ -4,11 +4,21 @@ class RequestsController < ApplicationController
 
   def index
     @requests = current_user.requests
+    @pending = @requests.where(status: 'pending')
+    @accepted = @requests.where(status: 'accept')
+    @decline = @requests.where(status: 'decline')
+    # @requests.each do |request|
+    #   request.where(status: 'accept')
+    #     accepted <<
+    #   elsif request.status == 'pending'
+    #     pending << request
+    #   elsif request.status == 'decline'
+    #     decline << request
+    #   end
   end
 
   def myqueue
   end
-
 
   def new
     @request = Request.new
