@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/listings/filter" => "listings#filter"
+  get '/listings/my-listings', to: 'listings#mylistings'
   get "/listings/availability" => "listings#availability"
 
   resources :listings do
