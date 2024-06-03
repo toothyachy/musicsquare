@@ -38,6 +38,16 @@ class RequestsController < ApplicationController
     end
   end
 
+  def accept
+    @request = Request.find(params[:id])
+    @request.update(status: "accept")
+    raise
+  end
+
+  def decline
+    raise
+  end
+
   private
   def request_params
     params.require(:request).permit(:requestor_comment, :approver_comment, :status, :date, :start_time, :end_time)
@@ -47,3 +57,8 @@ class RequestsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
   end
 end
+
+
+# listen to approve/decline
+# if approve, change status to 'approve', save request_time and request_date to booked_time
+# if decline, change status to 'decline'

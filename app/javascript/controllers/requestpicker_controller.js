@@ -31,6 +31,7 @@ export default class extends Controller {
     try {
       const response = await fetch(url)
       const slots = await response.json()
+      console.log(slots);
       return slots
     } catch (error) {
       console.error('Error:', error)
