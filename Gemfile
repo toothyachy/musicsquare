@@ -6,6 +6,8 @@ gem "simple_calendar"
 
 gem "ruby-openai"
 
+gem "cloudinary"
+
 gem "devise"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

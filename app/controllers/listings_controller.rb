@@ -23,7 +23,6 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
-    @listing.images << listing_params[:images]
     @listing.user = current_user
     if @listing.save
       # To update path to listing_path(@listing) when show.html.erb view is up
@@ -38,7 +37,6 @@ class ListingsController < ApplicationController
 
   def update
     @listing.update(listing_params)
-    @listing.images << listing_params[:images]
     if @listing.save
       # To update path to listing_path(@listing) when show.html.erb view is up
       redirect_to listings_path, status: :see_other
@@ -80,7 +78,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit(:name, :description, :sound_clip, :images, :instruments, :liked_genres, :liked_bands, :looking_for, availabilities_attributes: [:id, :date_range, :day, :start_time, :end_time])
+    params.require(:listing).permit(:name, :description, :sound_clip, :instruments, :liked_genres, :liked_bands, :looking_for, availabilities_attributes: [:id, :date_range, :day, :start_time, :end_time], images: [])
   end
 
   def set_listing
