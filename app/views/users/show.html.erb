@@ -1,0 +1,11 @@
+<div class="container text-align-center justify-content-start mx-auto">
+  <div>
+    <%= current_user.name %>
+  </div>
+  <div>
+    <%= current_user.email%>
+  </div>
+  <div>
+    <%= cl_image_tag current_user.profile_picture.key %>
+  </div>
+</div>
