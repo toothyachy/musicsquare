@@ -1,1 +1,11 @@
 <h1>connected to my queue</h1>
+
+<% @request.each do |indi| %>
+<p><% indi.requests.each do |request| %></p>
+  <p><%= request.listing.name %></p>
+  <p><%= request.status %></p>
+  <p><%= request.requestor_comment %></p>
+  <p><%= request.request_date %></p>
+  <p><%= request.request_time %></p>
+  <% end %>
+<% end %>
