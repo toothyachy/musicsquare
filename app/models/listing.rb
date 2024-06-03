@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   MUSICIANS = %w(vocals keyboardist guitarist bassist drummer)
   belongs_to :user
+  has_many :requests
   has_many :availabilities, dependent: :destroy
   accepts_nested_attributes_for :availabilities
 

@@ -2,6 +2,14 @@ require "time"
 
 class RequestsController < ApplicationController
 
+  def index
+    @request = current_user.requests
+  end
+
+  def myqueue
+  end
+
+
   def new
     @request = Request.new
     @listing = set_listing
