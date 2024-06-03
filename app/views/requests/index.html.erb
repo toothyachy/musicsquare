@@ -1,6 +1,6 @@
 <h1>connected to index</h1>
 
-<% @request.each do |user_request| %>
+<% @requests.each do |user_request| %>
   <p><%= user_request.listing.name %></p>
   <% user_request.listing.images.each do |image| %>
     <p><%= image_tag image %></p>
