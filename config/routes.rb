@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   get "/listings/filter" => "listings#filter"
   get '/listings/my-listings', to: 'listings#mylistings'
   get "/listings/availability" => "listings#availability"
+  get '/requests/myqueue', to: 'requests#myqueue'
 
   resources :listings do
     resources :requests, only: [ :new, :create ]
     resources :availabilities, only: [ :index ]
   end
+
+  resources :requests, only: [ :index ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

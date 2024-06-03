@@ -26,7 +26,7 @@ class ListingsController < ApplicationController
     @listing.user = current_user
     if @listing.save
       # To update path to listing_path(@listing) when show.html.erb view is up
-      redirect_to listings_path, status: :see_other
+      redirect_to listings_my_listings_path, status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
@@ -47,7 +47,7 @@ class ListingsController < ApplicationController
 
   def destroy
     @listing.destroy
-    redirect_to listings_path, status: :see_other
+    redirect_to listings_my_listings_path, status: :see_other
   end
 
   def filter
