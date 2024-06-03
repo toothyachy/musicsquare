@@ -21,9 +21,9 @@
               <p><%= listing.liked_genres %></p>
               <p><%= listing.looking_for %></p>
               <audio controls>
-              <source src="<%= cloudinary_url(listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
-              Your browser does not support the audio element.
-            </audio>
+                <source src="<%= cloudinary_url(listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
+                Your browser does not support the audio element.
+              </audio>
             </div>
           </div>
         <% end %>

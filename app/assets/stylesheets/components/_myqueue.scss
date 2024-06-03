@@ -37,10 +37,9 @@ p {
   color: $color;
 }
 
-// .decline {
-//   color: #FF6663;
-// }
-
-// .accept {
-//   color: #339989;
-// }
+.acceptance {
+  border: 1px solid $color;
+  padding: 3px 13px;
+  text-align: center;
+  color: $color;
+}
