@@ -3,18 +3,21 @@ class AvailabilitiesController < ApplicationController
   def index
     listing = params[:listing_id]
     availabilities = Availability.where(listing: listing)
-
+    requests = Request.where(listing: listing)
+    bookings = requests.map { |request| request.booked_time }
+    raise
     avail_slots = []
     date_slots = []
 
     availabilities.each do |availability|
-      avail_slots += get_current_available_slots(availability)
+      avail_slots += get_current_available_slots(availability, bookings)
       date_slots += set_date_slots(avail_slots)
     end
 
     @slots = { avail_slots: avail_slots, date_slots: date_slots }
     render json: @slots
   end
+
 
   private
 

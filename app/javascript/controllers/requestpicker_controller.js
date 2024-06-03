@@ -5,38 +5,50 @@ import flatpickr from "flatpickr";
 // Connects to data-controller="requestpicker"
 export default class extends Controller {
 
+  static targets = ["flatpickr", "timeslotpicker"]
+
   connect() {
     const listingId = this.element.dataset.requestpickerListingId;
-
     const url = `/listings/${listingId}/availabilities`
-    const fetchAvailableDates = async(url) => {
-      try {
-        const response = await fetch(url)
-        const slots = await response.json()
-        console.log(slots);
-        return slots
-      } catch (error) {
-        console.error('Error:', error)
-      }
-    }
 
-    fetchAvailableDates(url)
+    let { availSlots, dateSlots } = {}
+
+    this.#fetchAvailableDates(url)
     .then(slots => {
-      flatpickr(this.element, {
-      dateFormat: "Y-m-d",
-      enable: slots['date_slots'],
-      onChange: function(selectedDates, dateStr, instance) {
-        getTimeslots(selectedDates, dateStr, instance, slots['time_slots']);
-      }
+      availSlots = slots["avail_slots"]
+      dateSlots = slots["date_slots"]
+      flatpickr(this.flatpickrTarget, {
+        dateFormat: "Y-m-d",
+        enable: dateSlots,
+        onChange: (selectedDates, dateStr) => {
+          this.#getTimeslots(selectedDates, dateStr, availSlots);
+        }
+      })
     })
-  })
+  }
 
-    function getTimeslots(selectedDates, dateStr, instance, timeslots) {
-      console.log("Callback triggered!");
-      console.log(timeslots);
-      // console.log('the callback returns the selected dates', selectedDates)
-      // console.log('but returns it also as a string', dateStr)
-      // console.log('and the flatpickr instance', instance)
+  async #fetchAvailableDates(url) {
+    try {
+      const response = await fetch(url)
+      const slots = await response.json()
+      console.log(slots);
+      return slots
+    } catch (error) {
+      console.error('Error:', error)
     }
+  }
+
+  #getTimeslots(_, dateStr, availSlots) {
+    const timeslots = availSlots.filter(i => i.date === dateStr).map(i => i.start_time);
+    while (this.timeslotpickerTarget.firstChild) {
+      this.timeslotpickerTarget.removeChild(this.timeslotpickerTarget.firstChild);
+    }
+    timeslots.forEach(timeslot => {
+      const option = document.createElement("option");
+      option.value = timeslot;
+      option.textContent = timeslot.split('T')[1].slice(0,5);
+      this.timeslotpickerTarget.appendChild(option);
+    });
+    this.timeslotpickerTarget.classList.toggle("d-none")
   }
 }
