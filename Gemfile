@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+gem "simple_calendar"
+
+gem "ruby-openai"
+
 gem "cloudinary"
 
 gem "devise"

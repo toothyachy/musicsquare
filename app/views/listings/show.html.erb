@@ -1,5 +1,12 @@
-<h1>Detailed Listing</h1>
+<% if @listing.user == current_user %>
+  <%= link_to listing_path(@listing), class: 'add text-decoration-none fs-6', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+    <button class="text-danger border-danger add-text">delete</button>
+  <% end %>
+  <%= render 'showpage' %>
 
-<p><%= @listing.name %></p>
-
-<%= link_to "delete", listing_path(@listing), class: 'text-danger text-decoration-none fs-6', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% else %>
+  <%= link_to new_listing_request_path(@listing), class: "add text-decoration-none" do %>
+    <button class="add-text">Jam with us!</button>
+  <% end %>
+  <%= render 'showpage' %>
+<% end %>

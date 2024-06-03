@@ -1,0 +1,9 @@
+<h1>Create New Request</h1>
+
+<%= month_calendar events: @request do |date, events| %>
+  <%= date.day %>
+  <% time_slots = (8..17).to_a.map { |hour| "#{hour}:00" } %>
+  <% time_slots.each do |time_slot| %>
+    <%= link_to time_slot, select_time_slot_path(date: date, time: time_slot), method: :post %>
+  <% end %>
+<% end %>

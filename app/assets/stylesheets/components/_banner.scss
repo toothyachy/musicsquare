@@ -1,19 +1,39 @@
 .banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  color: black;
+  color: #131515;
   border-bottom: solid 1px;
   text-align: center;
 }
 
 .banner h1 {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+  font-family: "Space Mono", "Helvetica", "sans-serif";
+  font-size: 110px;
+  margin: 0;
+  padding: 25px 0 25px;
+}
+
+.banner-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .banner p {
   font-size: 20px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin: 0;
+  padding: 5px 0 5px;
+  animation: animate 15s infinite linear;
+  padding-right: 75px;
+}
+
+
+@keyframes animate {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }

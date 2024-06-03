@@ -1,0 +1,17 @@
+<h1>Create New Request</h1>
+
+  <%= simple_form_for [ @listing, @request ] do |f| %>
+    <%= f.input :requestor_comment %>
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :request_date,
+                  as: :string,
+                  label: "Available dates",
+                  input_html: { data: { controller: "requestpicker", requestpicker_listing_id: @listing.id } } %>
+      </div>
+      <div class="col-6">
+
+      </div>
+      <%= f.submit class:"btn btn-primary mt-3" %>
+    </div>
+  <% end %>

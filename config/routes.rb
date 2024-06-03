@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :listings
+  get "/listings/filter" => "listings#filter"
+  get '/listings/my-listings', to: 'listings#mylistings'
+  get "/listings/availability" => "listings#availability"
+
+  resources :listings do
+    resources :requests, only: [ :new, :create ]
+    resources :availabilities, only: [ :index ]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
