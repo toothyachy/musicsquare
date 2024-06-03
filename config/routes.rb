@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :availabilities, only: [ :index ]
   end
 
-  resources :requests, only: [ :index ]
+  resources :requests, only: [ :index, :update ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -51,5 +51,3 @@ export default class extends Controller {
     this.timeslotpickerTarget.classList.toggle("d-none")
   }
 }
-
-// Lister approve request -> save request, store booking datetime

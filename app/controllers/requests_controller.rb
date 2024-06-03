@@ -3,7 +3,7 @@ require "time"
 class RequestsController < ApplicationController
 
   def index
-    @request = current_user.requests
+    @requests = current_user.requests
   end
 
   def myqueue
