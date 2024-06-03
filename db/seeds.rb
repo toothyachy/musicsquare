@@ -12,6 +12,7 @@ require 'date'
 
 puts 'Destroying database'
 Availability.destroy_all
+Request.destroy_all
 Listing.destroy_all
 User.destroy_all
 
@@ -83,56 +84,24 @@ end
 puts "Creating new availabilities..."
 
 availabilities = [
-  { date: Date.parse("3 June 2024"),
-  start_time: DateTime.parse("3 June 2024 15:00:00"),
-  end_time: DateTime.parse("3 June 2024 19:00:00"),
+  { date_range: "2024-06-11 to 2024-09-20",
+  day: "Saturday",
+  start_time: "14:00",
+  end_time: "18:00",
   listing: Listing.first
   },
-  { date: Date.parse("7 June 2024"),
-  start_time: DateTime.parse("7 June 2024 18:00:00"),
-  end_time: DateTime.parse("7 June 2024 22:00:00"),
-  listing: Listing.first
-  },
-  { date: Date.parse("7 June 2024"),
-  start_time: DateTime.parse("7 June 2024 14:00:00"),
-  end_time: DateTime.parse("7 June 2024 16:00:00"),
-  listing: Listing.first
-  },
-  { date: Date.parse("8 June 2024"),
-  start_time: DateTime.parse("8 June 2024 12:00:00"),
-  end_time: DateTime.parse("8 June 2024 18:00:00"),
-  listing: Listing.first
-  },
-  { date: Date.parse("11 June 2024"),
-  start_time: DateTime.parse("11 June 2024 19:00:00"),
-  end_time: DateTime.parse("11 June 2024 21:00:00"),
-  listing: Listing.first
-  },
-  { date: Date.parse("13 June 2024"),
-  start_time: DateTime.parse("13 June 2024 15:00:00"),
-  end_time: DateTime.parse("13 June 2024 19:00:00"),
-  listing: Listing.first
-  },
-  { date: Date.parse("2 June 2024"),
-  start_time: DateTime.parse("2 June 2024 14:00:00"),
-  end_time: DateTime.parse("2 June 2024 22:00:00"),
+  { date_range: "2024-06-03 to 2024-08-29",
+  day: "Friday",
+  start_time: "18:00",
+  end_time: "21:00",
   listing: Listing.second
   },
-  { date: Date.parse("4 June 2024"),
-  start_time: DateTime.parse("4 June 2024 12:00:00"),
-  end_time: DateTime.parse("4 June 2024 18:00:00"),
-  listing: Listing.second
-  },
-  { date: Date.parse("7 June 2024"),
-  start_time: DateTime.parse("7 June 2024 19:00:00"),
-  end_time: DateTime.parse("7 June 2024 21:00:00"),
-  listing: Listing.second
-  },
-  { date: Date.parse("9 June 2024"),
-  start_time: DateTime.parse("9 June 2024 15:00:00"),
-  end_time: DateTime.parse("9 June 2024 19:00:00"),
-  listing: Listing.second
-  },
+  { date_range: "2024-07-01 to 2024-10-01",
+  day: "Wednesday",
+  start_time: "19:00",
+  end_time: "21:00",
+  listing: Listing.third
+  }
 ]
 
 availabilities.each do |attributes|
@@ -140,14 +109,34 @@ availabilities.each do |attributes|
   puts "Created availabilities for #{availability.listing.name}"
 end
 
-puts 'Finished!'
+requests = [
+  { requestor_comment: "I would love to jam with you guys!",
+    user: User.last,
+    listing: Listing.first,
+    request_date: "2024-06-15",
+    request_time: "15:00"
+ },
+  { requestor_comment: "Pretty pwease?",
+    approver_comment: "No thanks, we don't like people who act cute.",
+    status: "decline",
+    user: User.second,
+    listing: Listing.first,
+    request_date: "2024-06-22",
+    request_time: "17:00"
+  },
+  { requestor_comment: "Try try?",
+    approver_comment: "Sure thing!",
+    status: "accept",
+    user: User.last,
+    listing: Listing.first,
+    request_date: "2024-06-29",
+    request_time: "14:00"
+  },
+]
 
-# rails g model Request
-# requestor_comment:string
-# approver_comment:string
-# status:string
-# date:date
-# start_time:time
-# end_time:time
-# user:references
-# listing:references
+requests.each do |attributes|
+  request = Request.create!(attributes)
+  puts "Created requests for #{request.listing.name}"
+end
+
+puts 'Finished!'

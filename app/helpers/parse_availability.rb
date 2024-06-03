@@ -75,3 +75,58 @@ availability = {
 # 2024-07-08 - 2024-07-08T15:00:00+00:00 to 2024-07-08T16:00:00+00:00
 # 2024-07-15 - 2024-07-15T14:00:00+00:00 to 2024-07-15T15:00:00+00:00
 # 2024-07-15 - 2024-07-15T15:00:00+00:00 to 2024-07-15T16:00:00+00:00
+
+
+
+# availabilities = [
+#   { date: Date.parse("3 June 2024"),
+#   start_time: DateTime.parse("3 June 2024 15:00:00"),
+#   end_time: DateTime.parse("3 June 2024 19:00:00"),
+#   listing: Listing.first
+#   },
+#   { date: Date.parse("7 June 2024"),
+#   start_time: DateTime.parse("7 June 2024 18:00:00"),
+#   end_time: DateTime.parse("7 June 2024 22:00:00"),
+#   listing: Listing.first
+#   },
+#   { date: Date.parse("7 June 2024"),
+#   start_time: DateTime.parse("7 June 2024 14:00:00"),
+#   end_time: DateTime.parse("7 June 2024 16:00:00"),
+#   listing: Listing.first
+#   },
+#   { date: Date.parse("8 June 2024"),
+#   start_time: DateTime.parse("8 June 2024 12:00:00"),
+#   end_time: DateTime.parse("8 June 2024 18:00:00"),
+#   listing: Listing.first
+#   },
+#   { date: Date.parse("11 June 2024"),
+#   start_time: DateTime.parse("11 June 2024 19:00:00"),
+#   end_time: DateTime.parse("11 June 2024 21:00:00"),
+#   listing: Listing.first
+#   },
+#   { date: Date.parse("13 June 2024"),
+#   start_time: DateTime.parse("13 June 2024 15:00:00"),
+#   end_time: DateTime.parse("13 June 2024 19:00:00"),
+#   listing: Listing.first
+#   },
+#   { date: Date.parse("2 June 2024"),
+#   start_time: DateTime.parse("2 June 2024 14:00:00"),
+#   end_time: DateTime.parse("2 June 2024 22:00:00"),
+#   listing: Listing.second
+#   },
+#   { date: Date.parse("4 June 2024"),
+#   start_time: DateTime.parse("4 June 2024 12:00:00"),
+#   end_time: DateTime.parse("4 June 2024 18:00:00"),
+#   listing: Listing.second
+#   },
+#   { date: Date.parse("7 June 2024"),
+#   start_time: DateTime.parse("7 June 2024 19:00:00"),
+#   end_time: DateTime.parse("7 June 2024 21:00:00"),
+#   listing: Listing.second
+#   },
+#   { date: Date.parse("9 June 2024"),
+#   start_time: DateTime.parse("9 June 2024 15:00:00"),
+#   end_time: DateTime.parse("9 June 2024 19:00:00"),
+#   listing: Listing.second
+#   },
+# ]
