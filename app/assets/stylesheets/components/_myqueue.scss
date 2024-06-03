@@ -19,7 +19,7 @@ p {
   height: 200px;
 }
 
-.listing-wrapper {
+.queue-wrapper {
   width: 275px;
 }
 
@@ -30,8 +30,17 @@ p {
 }
 
 .requestor-box {
-  border: 1px solid black;
+  border: 1px solid $color;
   padding: 5px;
   text-align: center;
   margin-top: 15px;
+  color: $color;
 }
+
+// .decline {
+//   color: #FF6663;
+// }
+
+// .accept {
+//   color: #339989;
+// }
