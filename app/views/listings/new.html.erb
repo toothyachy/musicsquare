@@ -3,7 +3,7 @@
 <%= simple_form_for @listing do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :sound_clip %>
+  <%= f.input :sound_clip, as: :file %>
   <%= f.input :images, as: :file, input_html: { multiple: true } %>
   <%= f.input :instruments %>
   <%= f.input :liked_genres %>
