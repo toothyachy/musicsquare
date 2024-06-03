@@ -16,12 +16,16 @@
           <div class="list-wrap listing-wrapper col-3">
             <%= link_to listing_path(list), class: 'text-decoration-none text-secondary' do %>
               <div class="listing rounded p-3 my-5">
-                <%= image_tag list.images.first %>
+                <%= cl_image_tag list.images.first.key %>
                 <div class="listing-description mt-4">
                   <p><%= list.name %></p>
                   <p><%= list.liked_genres %></p>
                   <p><%= list.looking_for %></p>
                   <p>Sound clip button</p>
+                  <audio controls>
+                  <source src="<%= cloudinary_url(list.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
+                  Your browser does not support the audio element.
+                </audio>
                 </div>
               </div>
             <% end %>
