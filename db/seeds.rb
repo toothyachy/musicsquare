@@ -136,7 +136,26 @@ requests = [
     user: User.last,
     listing: Listing.first,
     request_date: "2024-06-29",
-    request_time: "14:00"
+    request_time: "14:00",
+    booked_time: "2024-06-29T14:00:00.000+00:00"
+  },
+  { requestor_comment: "Appreciate a go",
+  approver_comment: "Sure!",
+  status: "accept",
+  user: User.last,
+  listing: Listing.first,
+  request_date: "2024-06-29",
+  request_time: "17:00",
+  booked_time: "2024-06-29T17:00:00.000+00:00"
+  },
+  { requestor_comment: "Gimme a shot please",
+  approver_comment: "Okies",
+  status: "accept",
+  user: User.last,
+  listing: Listing.first,
+  request_date: "2024-07-06",
+  request_time: "15:00",
+  booked_time: "2024-07-06T15:00:00.000+00:00"
   },
 ]
 
