@@ -39,6 +39,17 @@ export default class extends Controller {
 
   #getTimeslots(_, dateStr, availSlots) {
     const timeslots = availSlots.filter(i => i.date === dateStr).map(i => i.start_time);
+    while (this.timeslotpickerTarget.firstChild) {
+      this.timeslotpickerTarget.removeChild(this.timeslotpickerTarget.firstChild);
+    }
+    timeslots.forEach(timeslot => {
+      const option = document.createElement("option");
+      option.value = timeslot;
+      option.textContent = timeslot.split('T')[1].slice(0,5);
+      this.timeslotpickerTarget.appendChild(option);
+    });
     this.timeslotpickerTarget.classList.toggle("d-none")
   }
 }
+
+// Lister approve request -> save request, store booking datetime
