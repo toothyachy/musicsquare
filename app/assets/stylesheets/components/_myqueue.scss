@@ -1,0 +1,46 @@
+$color: #131515;
+
+p {
+  font-size: 15px;
+}
+
+.nothing {
+  height: 100vh;
+}
+
+.nothing > p {
+  margin: 0;
+  font-size: 30px;
+  color: $color;
+}
+
+.queues-image {
+  width: 100%;
+  height: 200px;
+}
+
+.queue-wrapper {
+  width: 275px;
+}
+
+.queue img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.requestor-box {
+  border: 1px solid $color;
+  padding: 5px;
+  text-align: center;
+  margin-top: 15px;
+  color: $color;
+}
+
+// .decline {
+//   color: #FF6663;
+// }
+
+// .accept {
+//   color: #339989;
+// }

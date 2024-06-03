@@ -1,0 +1,14 @@
+<h1>connected to index</h1>
+
+<% @request.each do |user_request| %>
+  <p><%= user_request.listing.name %></p>
+  <% user_request.listing.images.each do |image| %>
+    <p><%= image_tag image %></p>
+  <% end %>
+  <p><%= user_request.requestor_comment %></p>
+  <p><%= user_request.request_date %></p>
+  <p><%= user_request.request_time %></p>
+  <p><%= user_request.status %></p>
+
+
+<% end %>
