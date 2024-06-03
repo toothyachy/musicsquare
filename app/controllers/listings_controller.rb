@@ -9,6 +9,10 @@ class ListingsController < ApplicationController
   def show
   end
 
+  def mylistings
+    @list = current_user.listings
+  end
+
   def new
     @listing = Listing.new
   end

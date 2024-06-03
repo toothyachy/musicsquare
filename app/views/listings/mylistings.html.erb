@@ -1,0 +1,33 @@
+<div class="add">
+  <%= link_to new_listing_path do %>
+    <button class="add-text">Create new listing</button>
+  <% end %>
+</div>
+
+<div class="my-listing d-flex">
+  <div class="left-column d-flex align-items-center">
+    <h2>My Listings</h2>
+  </div>
+
+  <div class="flex-grow-1">
+    <div class="container home">
+      <div class="row gap-3">
+        <% @list.each do |list| %>
+          <div class="list-wrap listing-wrapper col-3">
+            <%= link_to listing_path(list), class: 'text-decoration-none text-secondary' do %>
+              <div class="listing rounded p-3 my-5">
+                <%= image_tag list.images.first %>
+                <div class="listing-description mt-4">
+                  <p><%= list.name %></p>
+                  <p><%= list.liked_genres %></p>
+                  <p><%= list.looking_for %></p>
+                  <p>Sound clip button</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

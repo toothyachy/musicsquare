@@ -1,0 +1,27 @@
+$color: #131515;
+
+.add {
+  display: flex;
+  justify-content: end;
+  margin: 20px 25px 60px 0;
+}
+
+.add-text {
+  padding: 5px 10px;
+}
+
+.left-column {
+  padding: 0 100px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.left-column > h2 {
+  font-family: "Space Mono", "Helvetica", "sans-serif";
+  color: $color;
+}
+
+.list-wrap {
+  width: 325px;
+}
