@@ -1,11 +1,63 @@
 <h1>connected to my queue</h1>
 
-<% @request.each do |indi| %>
-<p><% indi.requests.each do |request| %></p>
-  <p><%= request.listing.name %></p>
-  <p><%= request.status %></p>
-  <p><%= request.requestor_comment %></p>
-  <p><%= request.request_date %></p>
-  <p><%= request.request_time %></p>
-  <% end %>
+
+<% if current_user.queues.present? %>
+  <%# pending %>
+  <div class="row">
+    <div class="col-4">
+      <h1>My queues</h1>
+    </div>
+    <div class="col-8">
+      <p><% current_user.queues.each do |request| %></p>
+        <% if request.status == 'pending' %>
+          <p><%= request.listing.name %></p>
+          <p><%= request.status %></p>
+          <p><%= request.requestor_comment %></p>
+          <p><%= request.request_date %></p>
+          <p><%= request.request_time %></p>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+
+  <%# approved %>
+  <div class="row">
+    <div class="col-4">
+      <h1>Accepted</h1>
+    </div>
+    <div class="col-8">
+      <p><% current_user.queues.each do |request| %></p>
+        <% if request.status == 'accept' %>
+          <p><%= request.listing.name %></p>
+          <p><%= request.status %></p>
+          <p><%= request.requestor_comment %></p>
+          <p><%= request.request_date %></p>
+          <p><%= request.request_time %></p>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+
+  <%# declined %>
+  <div class="row">
+    <div class="col-4">
+      <h1>Declined</h1>
+    </div>
+    <div class="col-8">
+      <p><% current_user.queues.each do |request| %></p>
+        <% if request.status == 'decline' %>
+          <p><%= request.listing.name %></p>
+          <p><%= request.status %></p>
+          <p><%= request.requestor_comment %></p>
+          <p><%= request.request_date %></p>
+          <p><%= request.request_time %></p>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+
+<% else %>
+  <div class="nothing d-flex align-items-center justify-content-center">
+  <p>You have nothing in your current queue.</p>
+  </div>
 <% end %>
