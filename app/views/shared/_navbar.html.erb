@@ -2,20 +2,29 @@
   <div class="container-fluid p-0">
     <% if user_signed_in? %>
       <div class="navbar flex-grow-1 align-items-center justify-content-start p-0">
-        <%= link_to 'Logo', listings_path, class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
+        <%# <%= image_tag 'logo.png' %>
+        <%= link_to 'MusicSquare', listings_path, class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
+        <%# <%= link_to listings_path do %>
+          <%# <%= image_tag'MS_logo.png', size: "75", class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
+        <%# <% end %>
           <%# image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
         <%# end %>
         <%= link_to "my listings", listings_my_listings_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
         <%= link_to "my requests", requests_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
         <%= link_to "my queue", requests_myqueue_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
       </div>
-      <div class="collapse navbar-collapse align-items-end">
-        <div class="navbar-nav me-auto">
-          <div class="nav-item dropdown py-2 px-4">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%# <%= cl_image_tag current_user.profile_picture.key, class: "avatar", alt: "dropdown menu" %>
+      <div class="collapse navbar-collapse align-items-center">
+        <div class="navbar-nav me-auto align-items-center">
+          <div class="py-3">
+            <%= current_user.name %>
+          </div>
+          <div class="nav-item dropdown px-4">
+            <a href="#" class="avatar rounded-circle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div>
+                <%= cl_image_tag(current_user.profile_picture.key, alt: "dropdown menu", height: 40, width: 40, gravity: :face, crop: :thumb, radius: "max") %>
+              </div>
             <%# <%= "profile pic", class: "avatar", alt: "dropdown menu" %>
-            TEST
+            <%# TEST %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "View profile", user_path(current_user.id), class: "dropdown-item"  %>

@@ -1,11 +1,14 @@
-<div class="container text-align-center justify-content-start mx-auto">
-  <div>
+<div class="text-center mt-5">
+<h1>Welcome to your Profile Page</h1>
+</div>
+<div class="container text-center">
+  <div class="mt-5 pt-5">
     <%= current_user.name %>
   </div>
-  <div>
+  <div cl="pt-5">
     <%= current_user.email%>
   </div>
-  <div>
+  <div class="border-radius: 50%">
     <%= cl_image_tag current_user.profile_picture.key %>
   </div>
 </div>
