@@ -20,7 +20,6 @@ class AvailabilitiesController < ApplicationController
       avail_slots += get_current_available_slots(availability, bookings)
       date_slots += set_date_slots(avail_slots)
     end
-
     @slots = { avail_slots: avail_slots, date_slots: date_slots }
     render json: @slots
   end
@@ -52,12 +51,13 @@ class AvailabilitiesController < ApplicationController
   end
 
   def get_current_available_slots(availability, bookings = [])
-  available_slots = set_available_slots(availability)
-  available_slots.each do |slot|
-    if bookings.include?(slot[:start_time])
-      available_slots.delete(slot)
+    available_slots = set_available_slots(availability)
+
+    available_slots.each do |slot|
+      if bookings.include?(slot[:start_time])
+        available_slots.delete(slot)
+      end
     end
+    available_slots
   end
-  available_slots
-end
 end

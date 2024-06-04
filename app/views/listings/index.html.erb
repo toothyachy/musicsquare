@@ -20,11 +20,15 @@
               <p><%= listing.name %></p>
               <p><%= listing.liked_genres %></p>
               <p><%= listing.looking_for %></p>
-              <button id="play-audio" data-music-target="button" data-action="click->music#togglePlayPause">Play</button>
-              <audio data-music-target="audio" class="d-none" controls>
-                <source src="<%= cloudinary_url(listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
-                Your browser does not support the audio element.
-              </audio>
+              <% if listing.sound_clip.key %>
+                <div>
+                  <button id="play-audio" data-music-target="button" data-action="click->music#togglePlayPause">Play</button>
+                  <audio data-music-target="audio" class="d-none" controls>
+                    <source src="<%= cloudinary_url(listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+              <% end %>
             </div>
           </div>
         <% end %>
