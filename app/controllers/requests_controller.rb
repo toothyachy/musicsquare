@@ -38,7 +38,12 @@ class RequestsController < ApplicationController
   end
 
   def decline
-    raise
+    @request = Request.find(params[:id])
+    if @request.update(status: "decline")
+      redirect_to listings_path, status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
@@ -65,8 +70,3 @@ class RequestsController < ApplicationController
     end
   end
 end
-
-
-# listen to approve/decline
-# if approve, change status to 'approve', save request_time and request_date to booked_time
-# if decline, change status to 'decline'
