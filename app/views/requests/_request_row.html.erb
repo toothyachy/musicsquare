@@ -14,7 +14,7 @@
           <div class="col-3">
             <div class="d-flex listing-wrapper queue-wrapper">
               <div class="listing queue rounded p-3 my-5">
-                <%= image_tag request.listing.images.first %>
+                <%= cl_image_tag request.listing.images.first.key %>
                 <div class="listing-description mt-4">
                   <p class="text-center">You sent a request to</p>
                   <strong class="d-flex justify-content-center"><%= request.listing.name %></strong>

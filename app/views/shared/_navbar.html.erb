@@ -9,9 +9,10 @@
         <%# <% end %>
           <%# image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
         <%# end %>
-        <%= link_to "my listings", listings_my_listings_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
-        <%= link_to "my requests", requests_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
-        <%= link_to "my queue", requests_myqueue_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
+        <%= link_to "my listings", listings_my_listings_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(listings_my_listings_path)}" %>
+        <%= link_to "my requests", requests_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(requests_path)}" %>
+        <%= link_to "my queue", requests_myqueue_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(requests_myqueue_path)}" %>
+        <%= link_to "create new listing", new_listing_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(new_listing_path)}" %>
       </div>
       <div class="collapse navbar-collapse align-items-center">
         <div class="navbar-nav me-auto align-items-center">
@@ -21,13 +22,7 @@
           <div class="nav-item dropdown px-4">
             <a href="#" class="avatar rounded-circle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div>
-
-              <% if current_user.profile_picture.key? %>
-                <%= cl_image_tag(current_user.profile_picture.key, alt: "dropdown menu", height: 40, width: 40, gravity: :face, crop: :thumb, radius: "max")  %>
-              <% else %>
-                <div>no image</div>
-              <% end %>
-
+                <%= cl_image_tag(current_user.profile_picture_with_fallback, alt: "dropdown menu", height: 40, width: 40, gravity: :face, crop: :thumb, radius: "max") %>
               </div>
             <%# <%= "profile pic", class: "avatar", alt: "dropdown menu" %>
             <%# TEST %>

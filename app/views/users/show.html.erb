@@ -9,6 +9,6 @@
     <%= current_user.email%>
   </div>
   <div class="border-radius: 50%">
-    <%= cl_image_tag current_user.profile_picture.key %>
+    <%= cl_image_tag current_user.profile_picture_with_fallback %>
   </div>
 </div>
