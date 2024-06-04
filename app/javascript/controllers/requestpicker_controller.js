@@ -39,12 +39,17 @@ export default class extends Controller {
   }
 
   #getTimeslots(_, dateStr, availSlots) {
-    const timeslots = availSlots.filter(i => i.date === dateStr).map(i => i.start_time);
+    const slotsForDate = availSlots.filter(i => i.date === dateStr)
+    console.log(slotsForDate);
+    const timeslots = slotsForDate.map(i => i.start_time);
+    console.log(timeslots);
     while (this.timeslotpickerTarget.firstChild) {
       this.timeslotpickerTarget.removeChild(this.timeslotpickerTarget.firstChild);
     }
     timeslots.forEach(timeslot => {
       const option = document.createElement("option");
+      // const index = timeslots.indexOf(timeslot)
+      // option.value = slotsForDate[index];
       option.value = timeslot;
       option.textContent = timeslot.split('T')[1].slice(0,5);
       this.timeslotpickerTarget.appendChild(option);

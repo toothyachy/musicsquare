@@ -58,10 +58,14 @@
         <div class="d-flex justify-content-center">
           <p class="description-wrapper"><%= @listing.description %></p>
         </div>
-          <audio controls>
-            <source src="<%= cloudinary_url(@listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
-            Your browser does not support the audio element.
-          </audio>
+        <% if @listing.sound_clip.key %>
+          <div>
+            <audio controls>
+              <source src="<%= cloudinary_url(@listing.sound_clip.key, resource_type: "video") %>" type="audio/mp3">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          <% end %>
         </div>
     </div>
   </div>

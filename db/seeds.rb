@@ -12,7 +12,6 @@ require "open-uri"
 require 'date'
 
 puts 'Destroying database'
-Availability.destroy_all
 Request.destroy_all
 Listing.destroy_all
 User.destroy_all
@@ -120,7 +119,7 @@ requests = [
     user: User.last,
     listing: Listing.first,
     request_date: "2024-06-15",
-    request_time: "15:00"
+    request_time: "2024-06-15T15:00:00.000+00:00"
  },
   { requestor_comment: "Pretty pwease?",
     approver_comment: "No thanks, we don't like people who act cute.",
@@ -128,7 +127,7 @@ requests = [
     user: User.second,
     listing: Listing.first,
     request_date: "2024-06-22",
-    request_time: "17:00"
+    request_time: "2024-06-22T17:00:00.000+00:00"
   },
   { requestor_comment: "Try try?",
     approver_comment: "Sure thing!",
@@ -136,7 +135,26 @@ requests = [
     user: User.last,
     listing: Listing.first,
     request_date: "2024-06-29",
-    request_time: "14:00"
+    request_time: "2024-06-29T14:00:00.000+00:00",
+    booked_time: "2024-06-29T14:00:00.000+00:00"
+  },
+  { requestor_comment: "Appreciate a go",
+  approver_comment: "Sure!",
+  status: "accept",
+  user: User.last,
+  listing: Listing.first,
+  request_date: "2024-06-29",
+  request_time: "2024-06-29T17:00:00.000+00:00",
+  booked_time: "2024-06-29T17:00:00.000+00:00"
+  },
+  { requestor_comment: "Gimme a shot please",
+  approver_comment: "Okies",
+  status: "accept",
+  user: User.last,
+  listing: Listing.first,
+  request_date: "2024-07-06",
+  request_time: "2024-07-06T15:00:00.000+00:00",
+  booked_time: "2024-07-06T15:00:00.000+00:00"
   },
 ]
 
