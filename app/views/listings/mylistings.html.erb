@@ -4,14 +4,14 @@
   <% end %>
 </div>
 
-<div class="my-listing d-flex">
-  <div class="left-column d-flex align-items-center">
+<div class="row">
+  <div class="left-column col-2 d-flex align-items-center justify-content-center">
     <h2>My Listings</h2>
   </div>
 
-  <div class="flex-grow-1">
+  <div class="col-10">
     <div class="container home">
-      <div class="row gap-3">
+      <div class="row gap-4">
         <% @list.each do |list| %>
           <div class="list-wrap listing-wrapper col-3">
             <%= link_to listing_path(list), class: 'text-decoration-none text-secondary' do %>
