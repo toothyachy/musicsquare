@@ -1,4 +1,4 @@
-<h1 class="d-flex text-align-center justify-content-center requests-header">My Requests</h1>
+<h1 class="d-flex text-align-center justify-content-center requests-header">My Queue</h1>
 <div class="d-flex align-items-center justify-content-center requests-navigation">
   <%= link_to 'Accepted', '#accepted-row', class: "in-page-links" %>
   <%= link_to 'Declined', '#declined-row', class: "in-page-links" %>
@@ -6,7 +6,7 @@
 
 <% if current_user.queues.present? %>
   <%# pending %>
-  <div class="row">
+  <div class="row border-bottom border-secondary">
     <div class="col-2 d-flex align-items-center justify-content-center">
       <h1>My queue</h1>
     </div>
@@ -45,9 +45,8 @@
     </div>
   </div>
 
-
   <%# accepted %>
-  <div id="accepted-row" class="row">
+  <div id="accepted-row" class="row border-bottom border-secondary">
     <div class="col-2 d-flex align-items-center justify-content-center">
       <h1>Accepted</h1>
     </div>
@@ -76,6 +75,7 @@
       <% end %>
     </div>
   </div>
+
   <%# declined %>
   <div id="declined-row" class="row">
     <div class="col-2 d-flex align-items-center justify-content-center">

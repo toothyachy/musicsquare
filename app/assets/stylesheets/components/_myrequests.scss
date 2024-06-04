@@ -31,3 +31,15 @@
   padding: 50px;
   font-family: "Space Mono", "Helvetica", "sans-serif";
 }
+
+.try-here:last-child {
+  border: 0;
+}
+
+.borders-add-here {
+  border-bottom: 1px solid #131515;
+}
+
+.borders-add-here:last-child {
+  border: 0;
+}
