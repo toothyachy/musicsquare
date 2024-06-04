@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "listings#index"
 
-  get "/listings/filter" => "listings#filter"
-  get '/listings/my-listings' => 'listings#mylistings'
-  get "/listings/availability" => "listings#availability"
-  get '/requests/myqueue' => 'requests#myqueue'
+  get "/listings/filter", to: "listings#filter"
+  get '/listings/my-listings', to: 'listings#mylistings'
+  get "/listings/availability", to: "listings#availability"
+  get '/requests/myqueue', to: 'requests#myqueue'
 
   resources :listings do
     resources :requests, only: [ :new, :create ]
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       patch :decline
     end
   end
+
+  resources :users, only: [:show]
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
