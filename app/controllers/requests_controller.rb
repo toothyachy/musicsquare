@@ -4,20 +4,12 @@ class RequestsController < ApplicationController
 
   def index
     @requests = current_user.requests
-    @pending = @requests.where(status: 'pending')
-    @accepted = @requests.where(status: 'accept')
-    @decline = @requests.where(status: 'decline')
-    # @requests.each do |request|
-    #   request.where(status: 'accept')
-    #     accepted <<
-    #   elsif request.status == 'pending'
-    #     pending << request
-    #   elsif request.status == 'decline'
-    #     decline << request
-    #   end
+    request_status
   end
 
   def myqueue
+    @requests = current_user.queues
+    request_status
   end
 
   def new
@@ -36,7 +28,7 @@ class RequestsController < ApplicationController
     end
   end
 
-  def accept
+  def accept 
     @request = Request.find(params[:id])
     if @request.update(status: "accept", booked_time: @request[:request_time])
       redirect_to listings_path, status: :see_other
@@ -61,5 +53,20 @@ class RequestsController < ApplicationController
 
   def set_listing
     @listing = Listing.find(params[:listing_id])
+  end
+
+  def request_status
+    @pending = []
+    @accepted = []
+    @declined = []
+    @requests.each do |request|
+      if request[:status] == 'pending'
+        @pending << request
+      elsif request[:status] == 'accept'
+        @accepted << request
+      elsif request[:status] == 'decline'
+        @declined << request
+      end
+    end
   end
 end
