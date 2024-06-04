@@ -20,7 +20,7 @@
             <div class="col-3">
               <div class="listing-wrapper queue-wrapper">
                 <div class="listing queue rounded p-3 my-5">
-                  <%= image_tag request.listing.images.first %>
+                  <%= cl_image_tag request.listing.images.first.key %>
                   <div class="listing-description mt-4">
                     <strong class="d-flex justify-content-center"><%= request.listing.name %></strong>
                     <p class="text-center">received a request to jam on <span class="rejected"><%= request.request_date %></span> at <span class="rejected"><%= request.request_time %></span> hours.</p>
@@ -60,7 +60,7 @@
             <div class="col-3">
               <div class="listing-wrapper queue-wrapper">
                 <div class="listing queue rounded p-3 my-5">
-                  <%= image_tag request.listing.images.first %>
+                  <%= cl_image_tag request.listing.images.first.key %>
                   <div class="listing-description mt-4">
                     <strong class="d-flex justify-content-center"><%= request.listing.name %></strong>
                     <p class="text-center"><span class="accepted">accepted</span> a request</p>
@@ -91,7 +91,7 @@
             <div class="col-3">
               <div class="listing-wrapper queue-wrapper">
                 <div class="listing queue rounded p-3 my-5">
-                  <%= image_tag request.listing.images.first %>
+                  <%= cl_image_tag request.listing.images.first.key %>
                   <div class="listing-description mt-4">
                     <strong class="d-flex justify-content-center"><%= request.listing.name %></strong>
                     <p class="text-center"><span class="declined">declined</span> a request to</p>
