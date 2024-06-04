@@ -28,7 +28,7 @@ class RequestsController < ApplicationController
     end
   end
 
-  def accept
+  def accept 
     @request = Request.find(params[:id])
     if @request.update(status: "accept", booked_time: @request[:request_time])
       redirect_to listings_path, status: :see_other
