@@ -5,9 +5,10 @@
         <%= link_to 'Logo', listings_path, class: "navbar-brand border-end py-3 px-5 m-0 fs-6 border-secondary" %>
           <%# image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
         <%# end %>
-        <%= link_to "my listings", listings_my_listings_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
-        <%= link_to "my requests", requests_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
-        <%= link_to "my queue", requests_myqueue_path, class: "nav-link border-end py-3 px-5 border-secondary" %>
+        <%= link_to "my listings", listings_my_listings_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(listings_my_listings_path)}" %>
+        <%= link_to "my requests", requests_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(requests_path)}" %>
+        <%= link_to "my queue", requests_myqueue_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(requests_myqueue_path)}" %>
+        <%= link_to "create new listing", new_listing_path, class: "nav-link border-end py-3 px-4 border-secondary #{'active' if current_page?(new_listing_path)}" %>
       </div>
       <div class="collapse navbar-collapse align-items-end">
         <div class="navbar-nav me-auto">
