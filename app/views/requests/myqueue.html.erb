@@ -1,7 +1,7 @@
 <% if current_user.queues.present? %>
   <%# pending %>
   <div class="row">
-    <div class="col-4 d-flex align-items-center justify-content-center">
+    <div class="col-3 d-flex align-items-center justify-content-center">
       <h1>My queue</h1>
     </div>
 
@@ -11,7 +11,7 @@
       </div>
     <% elsif @pending %>
       <% @pending.each do |request| %>
-        <div class="d-flex listing-wrapper queue-wrapper col-8">
+        <div class="d-flex listing-wrapper queue-wrapper col-9">
           <div class="listing queue rounded p-3 my-5">
             <%= image_tag request.listing.images.first %>
             <div class="listing-description mt-4">
@@ -28,6 +28,7 @@
                   <p class="acceptance">Decline</p>
                 <% end %>
               </div>
+
             </div>
           </div>
         </div>
@@ -38,7 +39,7 @@
 
   <%# accepted %>
   <div id="accepted-row" class="row">
-    <div class="col-4 d-flex align-items-center justify-content-center">
+    <div class="col-3 d-flex align-items-center justify-content-center">
       <h1>Accepted</h1>
     </div>
 
@@ -48,7 +49,7 @@
       </div>
     <% elsif @accepted %>
       <% @accepted.each do |request| %>
-        <div class="d-flex listing-wrapper queue-wrapper col-8">
+        <div class="d-flex listing-wrapper queue-wrapper col-9">
           <div class="listing queue rounded p-3 my-5">
             <%= image_tag request.listing.images.first %>
             <div class="listing-description mt-4">
@@ -65,7 +66,7 @@
   </div>
   <%# declined %>
   <div id="declined-row" class="row">
-    <div class="col-4 d-flex align-items-center justify-content-center">
+    <div class="col-3 d-flex align-items-center justify-content-center">
       <h1>Declined</h1>
     </div>
     <% if @declined == [] %>
@@ -74,7 +75,7 @@
       </div>
     <% elsif @declined %>
       <% @declined.each do |request| %>
-        <div class="d-flex listing-wrapper queue-wrapper col-8">
+        <div class="d-flex listing-wrapper queue-wrapper col-9">
           <div class="listing queue rounded p-3 my-5">
             <%= image_tag request.listing.images.first %>
             <div class="listing-description mt-4">
