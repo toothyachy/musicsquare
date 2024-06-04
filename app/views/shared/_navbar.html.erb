@@ -22,13 +22,7 @@
           <div class="nav-item dropdown px-4">
             <a href="#" class="avatar rounded-circle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div>
-
-              <% if current_user.profile_picture.key? %>
-                <%= cl_image_tag(current_user.profile_picture.key, alt: "dropdown menu", height: 40, width: 40, gravity: :face, crop: :thumb, radius: "max")  %>
-              <% else %>
-                <div>no image</div>
-              <% end %>
-
+                <%= cl_image_tag(current_user.profile_picture_with_fallback, alt: "dropdown menu", height: 40, width: 40, gravity: :face, crop: :thumb, radius: "max") %>
               </div>
             <%# <%= "profile pic", class: "avatar", alt: "dropdown menu" %>
             <%# TEST %>
