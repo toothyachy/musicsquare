@@ -68,18 +68,18 @@
     <div class="col-4 d-flex align-items-center justify-content-center">
       <h1>Declined</h1>
     </div>
-    <% if @decline == [] %>
+    <% if @declined == [] %>
       <div class="d-flex col-8">
         <p class="not-accepted">Everybody wants you</p>
       </div>
-    <% elsif @decline %>
-      <% @decline.each do |request| %>
+    <% elsif @declined %>
+      <% @declined.each do |request| %>
         <div class="d-flex listing-wrapper queue-wrapper col-8">
           <div class="listing queue rounded p-3 my-5">
             <%= image_tag request.listing.images.first %>
             <div class="listing-description mt-4">
               <strong class="d-flex justify-content-center"><%= request.listing.name %></strong>
-              <p class="text-center"><span class="rejected">declined</span> a request to</p>
+              <p class="text-center"><span class="declined">declined</span> a request to</p>
               <p class="text-center">to jam on <%= request.request_date %> at <%= request.request_time %></p>
               <p class="requestor-box"><%= request.approver_comment %></p>
 

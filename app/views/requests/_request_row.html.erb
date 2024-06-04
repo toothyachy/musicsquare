@@ -1,0 +1,17 @@
+<div id="<%= header.downcase %>%%>-row" class="row">
+  <div class="col-4 d-flex align-items-center justify-content-center">
+    <h1><%= header.capitalize %></h1>
+  </div>
+
+  <% if requests.empty? %>
+
+    <div class="d-flex col-8">
+      <p class="not-accepted"><%= comments %></p>
+    </div>
+
+  <% else %>
+
+    <%= render requests.reverse, header: header %>
+
+  <% end %>
+</div>

@@ -53,14 +53,14 @@ class RequestsController < ApplicationController
   def request_status
     @pending = []
     @accepted = []
-    @decline = []
+    @declined = []
     @requests.each do |request|
       if request[:status] == 'pending'
         @pending << request
       elsif request[:status] == 'accept'
         @accepted << request
       elsif request[:status] == 'decline'
-        @decline << request
+        @declined << request
       end
     end
   end
